@@ -1,0 +1,12 @@
+// .form-group {
+//   width: 100%;
+// }
+.form-control {
+  border-radius: 3px;
+  // width: 600px;
+  margin-left: 20px;
+}
+.form-control:focus {
+  border-color: #00bcd4;
+  box-shadow: none;
+}
