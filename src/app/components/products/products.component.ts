@@ -19,11 +19,6 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this._ProductService.getProducts().subscribe((data) => {
       this.productsList = data;
-
-      // this.productsList.forEach((product) => {
-      //   product.quantity = 1;
-      //   product.total = Number(product.price) * product.quantity;
-      // });
     });
   }
 

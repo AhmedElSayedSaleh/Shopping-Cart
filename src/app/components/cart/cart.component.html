@@ -1,43 +1,69 @@
-<ng-container *ngIf="true">
+<ng-container *ngIf="products.length != 0">
   <div class="container">
-    <div class="cart-table">
-      <div class="cart-product table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Sr.No</th>
-              <th scope="col">Product Name</th>
-              <th scope="col">Product Image</th>
-              <th scope="col">Description</th>
-              <th scope="col">Price</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Total</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Iphone</td>
-              <td>Image</td>
-              <td>This is branded phone</td>
-              <td>50,000</td>
-              <td>1</td>
-              <th>50,000</th>
-              <td>
-                <button class="btn btn-danger">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="row">
+      <div class="cart-table">
+        <div class="cart-product table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Sr.No</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Image</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of products; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ item.title }}</td>
+                <td>
+                  <img
+                    style="width: 120px"
+                    [src]="item.image"
+                    alt="{{ item.title }}"
+                  />
+                </td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <th>{{ item.total }}</th>
+                <td>
+                  <button (click)="removeItem(item)" class="btn btn-danger">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="d-flex justify-content-end pb-3">
+        <div>
+          <div class="pb-2">
+            Grand Total:
+            <strong>{{ grandPrice | currency }}</strong>
+          </div>
+          <button (click)="emptyCart()" class="btn btn-danger">
+            Empty Cart
+          </button>
+          <button routerLink="/products" class="btn btn-primary mx-2">
+            Shop More
+          </button>
+          <button class="btn btn-success">Checkout</button>
+        </div>
       </div>
     </div>
   </div>
 </ng-container>
 
-<ng-container *ngIf="false">
+<ng-container *ngIf="products.length === 0">
   <div class="container">
     <div class="card">
       <h5 class="card-title">My Cart</h5>
