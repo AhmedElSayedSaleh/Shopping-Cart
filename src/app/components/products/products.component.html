@@ -1,25 +1,25 @@
 <div class="container-fluid filter-menu">
   <div class="container d-flex">
     <div class="item">
-      <a>
+      <a (click)="productsFilter('all')">
         <i class="fas fa-gifts text-warning pb-2 fs-3"></i>
         <h6>All Products</h6>
       </a>
     </div>
     <div class="item">
-      <a>
+      <a (click)="productsFilter('electronics')">
         <i class="fas fa-laptop-medical text-warning pb-2 fs-3"></i>
         <h6>Electronics</h6>
       </a>
     </div>
     <div class="item">
-      <a>
+      <a (click)="productsFilter('fashion')">
         <i class="fas fa-tshirt text-warning pb-2 fs-3"></i>
         <h6>Fashion</h6>
       </a>
     </div>
     <div class="item">
-      <a>
+      <a (click)="productsFilter('jewelery')">
         <i class="fas fa-gem text-warning pb-2 fs-3"></i>
         <h6>Jewelry</h6>
       </a>
@@ -29,7 +29,7 @@
 
 <div class="container">
   <div class="row">
-    <ng-container *ngFor="let item of productsList">
+    <ng-container *ngFor="let item of filteredProducts">
       <div class="col-md-6 col-lg-4 col-xl-3">
         <div class="card my-3">
           <img
